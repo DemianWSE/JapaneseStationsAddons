@@ -2021,14 +2021,14 @@
  1047 * 10	 03 04 01 A5 01 FE 01 00 00 00
  1048 * 41	 04 48 FF 01 A5 C5 "Shinkansen roofs with track fences" 00
 
- //ID A6: Elongated platform with track fences, single (background)
+ //ID AA: Elongated platform with track fences, single (background)
 
  1049 * 6	 01 04 01 FF 04 00
  1050 sprites/elongatedempty.png 8 7 01 122 64 -51 -81
  1051 sprites/trackfences.png 8 7 01 122 64 -51 -101
  1052 sprites/elongatedempty.png 168 7 01 122 64 -11 -81
  1053 sprites/trackfences.png 168 7 01 122 64 -11 -101
- 1054 * 62	 00 04 02 01 A6 08 "JSA4" 
+ 1054 * 62	 00 04 02 01 AA 08 "JSA4" 
                                 09 02 
                  F4 03 00 00 
 			F6 00 00 1A 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80 
@@ -2036,17 +2036,17 @@
 			00 F6 00 06 1A 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
  1055 * 7	 02 04 00 00 01 00 00
  1056 * 7	 02 04 01 00 01 00 00
- 1057 * 10	 03 04 01 A6 01 FE 01 00 00 00
- 1058 * 43	 04 48 FF 01 A6 C5 "Elongated platform with track fences" 00
+ 1057 * 10	 03 04 01 AA 01 FE 01 00 00 00
+ 1058 * 43	 04 48 FF 01 AA C5 "Elongated platform with track fences" 00
 
-//ID A7: Elongated platform with track fences, single (foreground)
+//ID AB: Elongated platform with track fences, single (foreground)
 
  1059 * 6	 01 04 01 FF 04 00
  1060 sprites/elongatedempty.png 88 7 01 122 64 -51 -101
  1061 sprites/trackfences.png 88 7 01 122 64 -31 -91
  1062 sprites/elongatedempty.png 248 7 01 122 64 -11 -101
  1063 sprites/trackfences.png 248 7 01 122 64 -31 -91
- 1064 * 62	 00 04 02 01 A7 08 "JSA4" 
+ 1064 * 62	 00 04 02 01 AB 08 "JSA4" 
                                 09 02 
                  F4 03 00 00 
 			00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80 
@@ -2054,8 +2054,8 @@
 			0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
  1065 * 7	 02 04 00 00 01 00 00
  1066 * 7	 02 04 01 00 01 00 00
- 1067 * 10	 03 04 01 A7 01 FE 01 00 00 00
- 1068 * 43	 04 48 FF 01 A7 C5 "Elongated platform with track fences" 00
+ 1067 * 10	 03 04 01 AB 01 FE 01 00 00 00
+ 1068 * 43	 04 48 FF 01 AB C5 "Elongated platform with track fences" 00
 
 
 // Waypoints
