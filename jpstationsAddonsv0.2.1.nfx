@@ -1,0 +1,5330 @@
+//-----------------------------------------------------------------------------
+//	Japanese Station Set add-ons
+//	
+//-----------------------------------------------------------------------------
+
+
+setfeature(_STATION)
+setgrfversion(7)
+setpath(sprites) // relative path for real sprites
+
+textmode_on()
+
+grfinit(50 47 05 00,
+    grfname(ALL, "Japanese Station Set add-ons v0.2.1")
+    grfdescription(ALL,CRLF T_LGRAY A9 "Original Japanese Stations drawn by Sanchimaru and Tony Babelony" CRLF
+"and coded by Death (E. Silberstein), stevenh and Dandan" CRLF CRLF
+"Add-ons by DemianWSE")
+    grfurl(ALL, "https://github.com/DemianWSE/JapaneseStationsAddons")
+    grfpalette(WIN)
+    grfversion(2)
+    grfminversion(1)
+)
+
+textmode_off()
+
+// classes
+define(JSA0,4A 53 41 30)
+define(JSA2,4A 53 41 32)
+define(JSA3,4A 53 41 33)
+define(JSA4,4A 53 41 34)
+define(WAYP,57 41 59 50)
+// IDs
+define(PLAT_END, 0)
+define(PLAT_END_T, 1)
+define(RAMP_B, 2)
+define(RAMP_T, 3)
+define(HRAMP_B, 4)
+define(HRAMP_T, 5)
+//
+define(PLAT_BENCH_B, 8)
+define(PLAT_BENCH_G, 9)
+define(PLAT_PLANTS, 10)
+//
+define(OROOF_Y, 13)
+// ...
+
+//-----------------------------------------------------------------------------
+// Normal Platforms
+//-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+// ID 00: Long platform end (bottom)
+//-----------------------------------------------------------------------------
+
+
+definestation(PLAT_END, "Long platform end (bottom)",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endbottom.png 8 7 01 122 64 -31 -91)
+	sprite(endbottom.png 88 7 01 122 64 -51 -101)
+	sprite(endbottom.png 168 7 01 122 64 -31 -91)
+	sprite(endbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+layout(PLAT_END,
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,0,0), dxdydz(16,6,5))
+	compcol(1, xyz(0,10,0), dxdydz(16,6,5))
+    )
+    tile(
+	ground(1011)
+	compcol(2, xyz(0,0,0), dxdydz(6,16,5))
+	compcol(3, xyz(10,0,0), dxdydz(6,16,5))
+    )
+)
+
+makestation(PLAT_END,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 01: Long platform end (top)
+//-----------------------------------------------------------------------------
+
+definestation(PLAT_END_T, "Long platform end (top)",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endtop.png 8 7 01 122 64 -31 -91)
+	sprite(endtop.png 88 7 01 122 64 -51 -101)
+	sprite(endtop.png 168 7 01 122 64 -31 -91)
+	sprite(endtop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00	00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00	0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(PLAT_END_T,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 02: Simple ramps (bottom)
+//-----------------------------------------------------------------------------
+
+definestation(RAMP_B, "Simple ramps (bottom)",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampsbottom.png 8 7 01 122 64 -31 -91)
+	sprite(simplerampsbottom.png 88 7 01 122 64 -51 -101)
+	sprite(simplerampsbottom.png 168 7 01 122 64 -31 -91)
+	sprite(simplerampsbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00	00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00	0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(RAMP_B,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 03: Simple ramps (top)
+//-----------------------------------------------------------------------------
+
+definestation(RAMP_T, "Simple ramps (top)",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampstop.png 8 7 01 122 64 -31 -91)
+	sprite(simplerampstop.png 88 7 01 122 64 -51 -101)
+	sprite(simplerampstop.png 168 7 01 122 64 -31 -91)
+	sprite(simplerampstop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00	00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00	0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(RAMP_T,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 04: Half ramps (bottom)
+//-----------------------------------------------------------------------------
+
+definestation(HRAMP_B, "Half ramps (bottom)",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(halframpsbottom.png 8 7 01 122 64 -31 -91)
+	sprite(halframpsbottom.png 88 7 01 122 64 -51 -101)
+	sprite(halframpsbottom.png 168 7 01 122 64 -31 -91)
+	sprite(halframpsbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(HRAMP_B,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 05: Half ramps (top)
+//-----------------------------------------------------------------------------
+
+definestation(HRAMP_T, "Half ramps (top)",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(halframpstop.png 8 7 01 122 64 -31 -91)
+	sprite(halframpstop.png 88 7 01 122 64 -51 -101)
+	sprite(halframpstop.png 168 7 01 122 64 -31 -91)
+	sprite(halframpstop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(HRAMP_T,
+   default(ref(0))
+)
+
+copylayout(PLAT_END, PLAT_END_T .. HRAMP_T) //### TEST! ###
+
+
+//-----------------------------------------------------------------------------
+// ID 08: Platform with brown benches
+//-----------------------------------------------------------------------------
+
+definestation(8, "Platform with brown benches",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownbenches.png 8 7 01 122 64 -31 -91)
+	sprite(brownbenches.png 88 7 01 122 64 -51 -101)
+	sprite(brownbenches.png 168 7 01 122 64 -31 -91)
+	sprite(brownbenches.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(8,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 09: Platform with green benches
+//-----------------------------------------------------------------------------
+
+definestation(9, "Platform with green benches",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(greenbenches.png 8 7 01 122 64 -31 -91)
+	sprite(greenbenches.png 88 7 01 122 64 -51 -101)
+	sprite(greenbenches.png 168 7 01 122 64 -31 -91)
+	sprite(greenbenches.png 248 7 01 122 64 -11 -101)
+   )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(9,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 0A: Platform with plants
+//-----------------------------------------------------------------------------
+
+definestation(10, "Platform with plants",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(plants.png 8 7 01 122 64 -31 -91)
+	sprite(plants.png 88 7 01 122 64 -51 -101)
+	sprite(plants.png 168 7 01 122 64 -31 -91)
+	sprite(plants.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+
+makestation(10,
+   default(ref(0))
+)
+
+copylayout(0, 8 .. 10)
+
+
+//-----------------------------------------------------------------------------
+// ID 0D: Old roofs with yellow line
+//-----------------------------------------------------------------------------
+
+definestation(13, "Old roofs w/ yellow line",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(oldroofs_yellowlines.png 8 7 01 122 64 -31 -91)
+	sprite(oldroofs_yellowlines.png 88 7 01 122 64 -51 -101)
+	sprite(oldroofs_yellowlines.png 168 7 01 122 64 -31 -91)
+	sprite(oldroofs_yellowlines.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+layout(13,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,0,0), dxdydz(16,6,16))
+	compcol(1, xyz(0,10,0), dxdydz(16,6,16))
+    )
+    tile(
+	ground(1011)
+	compcol(2, xyz(0,0,0), dxdydz(6,16,16))
+	compcol(3, xyz(10,0,0), dxdydz(6,16,16))
+    )
+)
+
+makestation(13,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 10: Black overpass with yellow line
+//-----------------------------------------------------------------------------
+
+definestation(16, "Black overpass w/ yellow line",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(blackoverpass_yellowlines.png 8 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines.png 88 7 01 122 64 -51 -101)
+	sprite(blackoverpass_yellowlines.png 168 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+layout(16,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,0,0), dxdydz(16,6,5))
+	compcol(1, xyz(0,10,0), dxdydz(16,6,16))
+    )
+    tile(
+	ground(1011)
+	compcol(2, xyz(0,0,0), dxdydz(6,16,5))
+	compcol(3, xyz(10,0,0), dxdydz(6,16,16))
+    )
+)
+
+makestation(16,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// ID 11: Brown overpass with yellow line
+//-----------------------------------------------------------------------------
+
+definestation(17, "Brown overpass w/ yellow line",
+	class(JSA0)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownoverpass_yellowlines.png 8 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines.png 88 7 01 122 64 -51 -101)
+	sprite(brownoverpass_yellowlines.png 168 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(16, 17)
+
+makestation(17,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+// Single-sided Platforms
+//-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+//ID 12: Lights, single (background)
+//-----------------------------------------------------------------------------
+
+definestation(18, "Lights (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(lights.png 8 7 01 122 64 -31 -91)
+	sprite(lights.png 168 7 01 122 64 -31 -91)
+	)
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+layout(18,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,0,0), dxdydz(16,6,5))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(0,0,0), dxdydz(6,16,5))
+    )
+)
+
+makestation(18,
+   default(ref(0))
+)
+
+//-----------------------------------------------------------------------------
+//ID 13: Lights, single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(19, "Lights (front)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(lights.png 88 7 01 122 64 -51 -101)
+	sprite(lights.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+layout(19,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,10,0), dxdydz(16,6,5))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(10,0,0), dxdydz(6,16,5))
+    )
+)
+
+makestation(19,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 14: Long platform end (bottom), single (background)
+//-----------------------------------------------------------------------------
+
+definestation(20, "Long platform end",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endbottom.png 8 7 01 122 64 -31 -91)
+	sprite(endbottom.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 20)
+
+makestation(20,
+   default(ref(0))
+)
+
+//-----------------------------------------------------------------------------
+//ID 15: Long platform end (bottom), single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(21, "Long platform end",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endbottom.png 88 7 01 122 64 -51 -101)
+	sprite(endbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 21)
+
+makestation(21,
+   default(ref(0))
+)
+
+//-----------------------------------------------------------------------------
+//ID 16: Long platform end (top), single (background)
+//-----------------------------------------------------------------------------
+
+definestation(22, "Long platform end",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endtop.png 8 7 01 122 64 -31 -91)
+	sprite(endtop.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 22)
+
+makestation(22,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 17: Long platform end (top), single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(23, "Long platform end",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endtop.png 88 7 01 122 64 -51 -101)
+	sprite(endtop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 23)
+
+makestation(23,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 18: Simple ramps (bottom), single (background)
+//-----------------------------------------------------------------------------
+
+definestation(24, "Simple ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampsbottom.png 8 7 01 122 64 -31 -91)
+	sprite(simplerampsbottom.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 24)
+
+makestation(24,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 19: Simple ramps (bottom), single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(25, "Simple ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampsbottom.png 88 7 01 122 64 -51 -101)
+	sprite(simplerampsbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 25)
+
+makestation(25,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 1A: Simple ramps (top), single (background)
+//-----------------------------------------------------------------------------
+
+definestation(26, "Simple ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampstop.png 8 7 01 122 64 -31 -91)
+	sprite(simplerampstop.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 26)
+
+makestation(26,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 1B: Simple ramps (top), single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(27, "Simple ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampstop.png 88 7 01 122 64 -51 -101)
+	sprite(simplerampstop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 27)
+
+makestation(27,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 1C: Half ramps (bottom), single (background)
+//-----------------------------------------------------------------------------
+
+definestation(28, "Half ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(halframpsbottom.png 8 7 01 122 64 -31 -91)
+	sprite(halframpsbottom.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 28)
+
+makestation(28,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 1D: Half ramps (bottom), single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(29, "Half ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(halframpsbottom.png 88 7 01 122 64 -51 -101)
+	sprite(halframpsbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 29)
+
+makestation(29,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 1E: Half ramps (top), single (background)
+//-----------------------------------------------------------------------------
+
+definestation(30, "Half ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(halframpstop.png 8 7 01 122 64 -31 -91)
+	sprite(halframpstop.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 30)
+
+makestation(30,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 1F: Half ramps (top), single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(31, "Half ramps",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(halframpstop.png 88 7 01 122 64 -51 -101)
+	sprite(halframpstop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 31)
+
+makestation(31,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 24: Platform with brown benches, single (background)
+//-----------------------------------------------------------------------------
+
+definestation(36, "Platform with brown benches",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownbenches.png 8 7 01 122 64 -31 -91)
+	sprite(brownbenches.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 36)
+
+makestation(36,
+   default(ref(0))
+)
+
+
+//-----------------------------------------------------------------------------
+//ID 25: Platform with brown benches, single (foreground)
+//-----------------------------------------------------------------------------
+
+definestation(37, "Platform with brown benches",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownbenches.png 88 7 01 122 64 -51 -101)
+  	sprite(brownbenches.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+// 	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 37)
+
+makestation(37,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 26: Platform with green benches, single (background)
+//----------------------------------------------------------------------------
+
+definestation(38, "Platform with green benches",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(greenbenches.png 8 7 01 122 64 -31 -91)
+	sprite(greenbenches.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 38)
+
+makestation(38,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 27: Platform with green benches, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(39, "Platform with green benches",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(greenbenches.png 88 7 01 122 64 -51 -101)
+	sprite(greenbenches.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 39)
+
+makestation(39,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 28: Platform with plants, single (background)
+//----------------------------------------------------------------------------
+
+definestation(40, "Platform with plants",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(plants.png 8 7 01 122 64 -31 -91)
+	sprite(plants.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 08 2E 84 00 00 80
+layout(40,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,0,0), dxdydz(16,6,8))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(0,0,0), dxdydz(6,16,8))
+    )
+)
+
+makestation(40,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 29: Platform with plants, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(41, "Platform with plants",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(plants.png 88 7 01 122 64 -51 -101)
+	sprite(plants.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 08 2E 84 00 00 80
+layout(41,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,10,0), dxdydz(16,6,8))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(10,0,0), dxdydz(6,16,8))
+    )
+)
+
+makestation(41,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 2A: Platform with vending machines, single (background)
+//----------------------------------------------------------------------------
+
+definestation(42, "Platform with vending machines",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(vendingmachines.png 8 7 01 122 64 -31 -91)
+	sprite(vendingmachines.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 08 2E 84 00 00 80
+copylayout(40, 42)
+
+makestation(42,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 2B: Platform with vending machines, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(43, "Platform with vending machines",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(vendingmachines.png 88 7 01 122 64 -51 -101)
+	sprite(vendingmachines.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 08 2E 84 00 00 80
+copylayout(41, 43)
+
+makestation(43,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 30: Old roofs with yellow line, single (background)
+//----------------------------------------------------------------------------
+
+definestation(48, "Old roofs w/ yellow line",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(oldroofs_yellowlines.png 8 7 01 122 64 -31 -91)
+	sprite(oldroofs_yellowlines.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2E 84 00 00 80
+layout(48,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,0,0), dxdydz(16,6,16))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(0,0,0), dxdydz(6,16,16))
+    )
+)
+
+makestation(48,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 31: Old roofs with yellow line, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(49, "Old roofs w/ yellow line",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(oldroofs_yellowlines.png 88 7 01 122 64 -51 -101)
+	sprite(oldroofs_yellowlines.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+layout(49,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,10,0), dxdydz(16,6,16))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(10,0,0), dxdydz(6,16,16))
+    )
+)
+
+makestation(49,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 36: Black overpass with yellow line, single (background)
+//----------------------------------------------------------------------------
+
+definestation(54, "Black overpass w/ yellow line",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(blackoverpass_yellowlines_back.png 8 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(blackoverpass_yellowlines_back.png 168 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 54)
+
+makestation(54,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 37: Black overpass with yellow line, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(55, "Black overpass w/ yellow line",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(blackoverpass_yellowlines.png 88 7 01 122 64 -51 -101)
+	sprite(blackoverpass_yellowlines.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 55)
+
+makestation(55,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 38: Brown overpass with yellow line, single (background)
+//----------------------------------------------------------------------------
+
+definestation(56, "Brown overpass w/ yellow line",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownoverpass_yellowlines_back.png 8 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(brownoverpass_yellowlines_back.png 168 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 56)
+
+makestation(56,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 39: Brown overpass with yellow line, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(57, "Brown overpass w/ yellow line",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownoverpass_yellowlines.png 88 7 01 122 64 -51 -101)
+	sprite(brownoverpass_yellowlines.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 57)
+
+makestation(57,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 3A: White overpass (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(58, "Single white overpass",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_front.png 8 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 8 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_front.png 168 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 1F 2D 84 00 00 00 0A 00 10 06 1F 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 1F 2F 84 00 00 0A 00 00 06 10 1F 30 84 00 00 80
+copylayout(13, 58)
+
+makestation(58,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 3B: White overpass (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(59, "Single white overpass (front)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_front.png 88 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 1F 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 1F 2E 84 00 00 80
+copylayout(49, 59)
+
+makestation(59,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 3C: White overpass (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(60, "Single white overpass (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_back.png 8 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 88 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_back.png 168 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 1F 2D 84 00 00 00 0A 00 10 06 1F 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 1F 2F 84 00 00 0A 00 00 06 10 1F 30 84 00 00 80
+copylayout(13, 60)
+
+makestation(60,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 3D: White overpass (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(61, "Single white overpass (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 1F 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 1F 2E 84 00 00 80
+copylayout(49, 61)
+
+makestation(61,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 3E: Black overpass with yellow line (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(62, "Single black overpass",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_front.png 8 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_front.png 168 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 62)
+
+makestation(62,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 3F: Black overpass with yellow line (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(63, "Black overpass (front)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_front.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 63)
+
+makestation(63,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 40: Black overpass with yellow line (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(64, "Black overpass (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_back.png 8 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_back.png 168 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 64)
+
+makestation(64,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 41: Black overpass with yellow line (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(65, "Black overpass /w yellow line (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_back.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 65)
+
+makestation(65,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 20: Brown overpass with yellow line (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(32, "Brown overpass /w yellow line (front)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_front.png 8 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_front.png 168 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 32)
+
+makestation(32,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 21: Brown overpass with yellow line (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(33, "Brown overpass /w yellow line (front)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_front.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 33)
+
+makestation(33,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 22: Brown overpass with yellow line (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(34, "Brown overpass /w yellow line (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_back.png 8 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_back.png 168 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 34)
+
+makestation(34,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 23: Brown overpass with yellow line (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(35, "Brown overpass /w yellow line (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 35)
+
+makestation(35,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 2C: Green overpass with yellow line (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(44, "Green overpass /w yellow line (front)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_front.png 8 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_front.png 168 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 44)
+
+makestation(44,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 2D: Green overpass with yellow line (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(45, "Green overpass /w yellow line (front)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_front.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 45)
+
+makestation(45,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 2E: Green overpass with yellow line (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(46, "Green overpass /w yellow line (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_back.png 8 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_back.png 168 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 46)
+
+makestation(46,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 2F: Green overpass with yellow line (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(47, "Green overpass /w yellow line (back)",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 47)
+
+makestation(47,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID E4: Black double-ended overpass with yellow line, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(228, "Black double-ended overpass",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(blackoverpass_doubleend.png 8 7 01 122 64 -51 -101)
+	sprite(blackoverpass_doubleend.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 228)
+
+makestation(228,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID E5: Brown double-ended overpass with yellow line, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(229, "Brown double-ended overpass",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownoverpass_doubleend.png 8 7 01 122 64 -51 -101)
+	sprite(brownoverpass_doubleend.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 229)
+
+makestation(229,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID E6: Green double-ended overpass with yellow line, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(230, "Green double-ended overpass",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(greenoverpass_doubleend.png 8 7 01 122 64 -51 -101)
+	sprite(greenoverpass_doubleend.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 230)
+
+makestation(230,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID EA: Black overpass, no platform
+//----------------------------------------------------------------------------
+
+definestation(234, "Black overpass{,} no platform",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(overpasswaypoints1.png 88 7 01 122 64 -51 -101)
+	sprite(overpasswaypoints1.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 234)
+
+makestation(234,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID EB: Brown overpass, no platform
+//----------------------------------------------------------------------------
+
+definestation(235, "Brown overpass{,} no platform",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(overpasswaypoints1.png 8 7 01 122 64 -51 -101)
+	sprite(overpasswaypoints1.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 235)
+
+makestation(235,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID EC: Green overpass, no platform
+//----------------------------------------------------------------------------
+
+definestation(236, "Green overpass{,} no platform",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(overpasswaypoints2.png 8 7 01 122 64 -51 -101)
+	sprite(overpasswaypoints2.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 236)
+
+makestation(236,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID ED: Modular overpass low, no platform
+//----------------------------------------------------------------------------
+
+definestation(237, "Modular overpass low{,} no platform",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(modularoverpass2.png 168 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 8 7 01 122 64 -51 -101)
+	sprite(modularoverpass2.png 248 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 237)
+
+makestation(237,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID EE: Modular overpass high, no platform
+//----------------------------------------------------------------------------
+
+definestation(238, "Modular overpass high{,} no platform",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(modularoverpass2.png 168 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 168 7 01 122 64 -51 -101)
+	sprite(modularoverpass2.png 248 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 238)
+
+makestation(238,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID EF: Modular overpass slanted roof, no platform
+//----------------------------------------------------------------------------
+
+definestation(239, "Modular overpass slanted roof{,} no platform",
+	class(JSA2)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(modularoverpass2.png 168 7 01 122 64 -31 -91)
+	sprite(modularoverpass2.png 8 7 01 122 64 -51 -101)
+	sprite(modularoverpass2.png 248 7 01 122 64 -31 -91)
+	sprite(modularoverpass2.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 239)
+
+makestation(239,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+// Single-sided Platforms with Fences
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+//ID 42: Empty platform with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(66, "Platform with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(emptywfences.png 8 7 01 122 64 -31 -91)
+	sprite(emptywfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 66)
+
+makestation(66,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 43: Empty platform with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(67, "Platform with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(emptywfences.png 88 7 01 122 64 -51 -101)
+	sprite(emptywfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 67)
+
+makestation(67,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 46: Lights with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(70, "Lights with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(lightswfences.png 8 7 01 122 64 -31 -91)
+	sprite(lightswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 70)
+
+makestation(70,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 47: Lights with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(71, "Lights with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(lightswfences.png 88 7 01 122 64 -51 -101)
+	sprite(lightswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 71)
+
+makestation(71,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 48: Signs with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(72, "Signs with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(signswfences.png 8 7 01 122 64 -31 -91)
+	sprite(signswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 72)
+
+makestation(72,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 49: Signs with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(73, "Signs with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(signswfences.png 88 7 01 122 64 -51 -101)
+	sprite(signswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 73)
+
+makestation(73,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 4A: Long platform end with fences (bottom), single (background)
+//----------------------------------------------------------------------------
+
+definestation(74, "Long platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endwfencesbottom.png 8 7 01 122 64 -31 -91)
+	sprite(endwfencesbottom.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 74)
+
+makestation(74,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 4B: Long platform end with fences (bottom), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(75, "Long platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endwfencesbottom.png 88 7 01 122 64 -51 -101)
+	sprite(endwfencesbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 75)
+
+makestation(75,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 4C: Long platform end with fences (top), single (background)
+//----------------------------------------------------------------------------
+
+definestation(76, "Long platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endwfencestop.png 8 7 01 122 64 -31 -91)
+	sprite(endwfencestop.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 76)
+
+makestation(76,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 4D: Long platform end with fences (top), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(77, "Long platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(endwfencestop.png 88 7 01 122 64 -51 -101)
+	sprite(endwfencestop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 77)
+
+makestation(77,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 4E: Platform end with fences (bottom), single (background)
+//----------------------------------------------------------------------------
+
+definestation(78, "Platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(shortendwfencesbottom.png 8 7 01 122 64 -31 -91)
+	sprite(shortendwfencesbottom.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 78)
+
+makestation(78,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 4F: Platform end with fences (bottom), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(79, "Platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(shortendwfencesbottom.png 88 7 01 122 64 -51 -101)
+	sprite(shortendwfencesbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 79)
+
+makestation(79,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 50: Platform end with fences (top), single (background)
+//----------------------------------------------------------------------------
+
+definestation(80, "Platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(shortendwfencestop.png 8 7 01 122 64 -31 -91)
+	sprite(shortendwfencestop.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 80)
+
+makestation(80,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 51: Platform end with fences (top), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(81, "Platform end with fences",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(shortendwfencestop.png 88 7 01 122 64 -51 -101)
+	sprite(shortendwfencestop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 81)
+
+makestation(81,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 52: Simple ramps with fences (bottom), single (background)
+//----------------------------------------------------------------------------
+
+definestation(82, "Simple ramps with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampswfencesbottom.png 8 7 01 122 64 -31 -91)
+	sprite(simplerampswfencesbottom.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 82)
+
+makestation(82,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 53: Simple ramps with fences (bottom), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(83, "Simple ramps with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampswfencesbottom.png 88 7 01 122 64 -51 -101)
+	sprite(simplerampswfencesbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 83)
+
+makestation(83,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 54: Simple ramps with fences (top), single (background)
+//----------------------------------------------------------------------------
+
+definestation(84, "Simple ramps with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampswfencestop.png 8 7 01 122 64 -31 -91)
+	sprite(simplerampswfencestop.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 84)
+
+makestation(84,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 55: Simple ramps with fences (top), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(85, "Simple ramps with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampswfencestop.png 88 7 01 122 64 -51 -101)
+	sprite(simplerampswfencestop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 85)
+
+makestation(85,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 5E: Brown benches with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(94, "Brown benches with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownbencheswfences.png 8 7 01 122 64 -31 -91)
+	sprite(brownbencheswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 94)
+
+makestation(94,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 5F: Brown benches with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(95, "Brown benches with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(brownbencheswfences.png 88 7 01 122 64 -51 -101)
+	sprite(brownbencheswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 95)
+
+makestation(95,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 60: Green benches with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(96, "Green benches with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(greenbencheswfences.png 8 7 01 122 64 -31 -91)
+	sprite(greenbencheswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 96)
+
+makestation(96,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 61: Green benches with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(97, "Green benches with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(greenbencheswfences.png 88 7 01 122 64 -51 -101)
+	sprite(greenbencheswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+// 	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 97)
+
+makestation(97,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 62: Plants with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(98, "Plants with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(plantswfences.png 8 7 01 122 64 -31 -91)
+	sprite(plantswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 08 2E 84 00 00 80
+copylayout(40, 98)
+
+makestation(98,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 63: Plants with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(99, "Plants with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(plantswfences.png 88 7 01 122 64 -51 -101)
+	sprite(plantswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+// 	F4 03 00 00
+//	00 0A 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 08 2E 84 00 00 80
+copylayout(41, 99)
+
+makestation(99,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 64: Platform with vending machines, single (background)
+//----------------------------------------------------------------------------
+
+definestation(100, "Platform with vending machines (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(vendingmachineswfences.png 8 7 01 122 64 -31 -91)
+	sprite(vendingmachineswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 08 2E 84 00 00 80
+copylayout(40, 100)
+
+makestation(100,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 65: Platform with vending machines, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(101, "Platform with vending machines (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(vendingmachineswfences.png 88 7 01 122 64 -51 -101)
+	sprite(vendingmachineswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 08 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 08 2E 84 00 00 80
+copylayout(41, 101)
+
+makestation(101,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 66: Old roofs with yellow line, single (background)
+//----------------------------------------------------------------------------
+
+definestation(102, "Old roofs w/ yellow line (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(oldroofs_yellowlineswfences.png 8 7 01 122 64 -31 -91)
+	sprite(oldroofs_yellowlineswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2E 84 00 00 80
+copylayout(48, 102)
+
+makestation(102,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 67: Old roofs with yellow line, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(103, "Old roofs w/ yellow line (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(oldroofs_yellowlineswfences.png 88 7 01 122 64 -51 -101)
+	sprite(oldroofs_yellowlineswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 103)
+
+makestation(103,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 68: Tiled roofs with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(104, "Tiled roofs with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(tiledroofswfences.png 8 7 01 122 64 -31 -91)
+	sprite(tiledroofswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2E 84 00 00 80
+copylayout(48, 104)
+
+makestation(104,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 69: Tiled roofs with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(105, "Tiled roofs with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(tiledroofswfences.png 88 7 01 122 64 -51 -101)
+	sprite(tiledroofswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 105)
+
+makestation(105,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 6A: Metal roofs with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(106, "Metal roofs with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(metalroofswfences.png 8 7 01 122 64 -31 -91)
+	sprite(metalroofswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2E 84 00 00 80
+copylayout(48, 106)
+
+makestation(106,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 6B: Metal roofs with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(107, "Metal roofs with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(metalroofswfences.png 88 7 01 122 64 -51 -101)
+	sprite(metalroofswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 107)
+
+makestation(107,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 6C: Shinkansen roofs with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(108, "Shinkansen roofs with fences (back)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(shinkansenroofswfences.png 8 7 01 122 64 -31 -91)
+	sprite(shinkansenroofswfences.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2E 84 00 00 80
+copylayout(48, 108)
+
+makestation(108,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 6D: Shinkansen roofs with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(109, "Shinkansen roofs with fences (front)",
+	class(JSA3)
+//	setcargotriggers(PASS)
+//	flags(FOUNDATIONS)
+)
+
+spriteblock(
+    set(
+	sprite(shinkansenroofswfences.png 88 7 01 122 64 -51 -101)
+	sprite(shinkansenroofswfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 109)
+
+makestation(109,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 6E: Green overpass with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(110, "Green overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(greenoverpass_wfences_back.png 8 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(greenoverpass_wfences_back.png 168 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 110)
+
+makestation(110,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 6F: Green overpass with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(111, "Green overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(greenoverpass_wfences.png 88 7 01 122 64 -51 -101)
+	sprite(greenoverpass_wfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 111)
+
+makestation(111,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 70: Black overpass with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(112, "Black overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(blackoverpass_wfences.png 8 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(blackoverpass_wfences.png 168 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 112)
+
+makestation(112,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 71: Black overpass with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(113, "Black overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(blackoverpass_wfences.png 88 7 01 122 64 -51 -101)
+	sprite(blackoverpass_wfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 113)
+
+makestation(113,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 72: Brown overpass with fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(114, "Brown overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(brownoverpass_wfences.png 8 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(brownoverpass_wfences.png 168 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 114)
+
+makestation(114,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 73: Brown overpass with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(115, "Brown overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(brownoverpass_wfences.png 88 7 01 122 64 -51 -101)
+	sprite(brownoverpass_wfences.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 115)
+
+makestation(115,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 74: Single white overpass with fences (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(116, "Single white overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_wfences_front.png 8 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 8 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_wfences_front.png 168 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 1F 2D 84 00 00 00 0A 00 10 06 1F 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 1F 2F 84 00 00 0A 00 00 06 10 1F 30 84 00 00 80
+copylayout(13, 116)
+
+makestation(116,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 75: Single white overpass with fences (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(117, "Single white overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_wfences_front.png 88 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_wfences_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 1F 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 1F 2E 84 00 00 80
+copylayout(49, 117)
+
+makestation(117,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 76: Single white overpass with fences (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(118, "Single white overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_wfences_back.png 8 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 88 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_wfences_back.png 168 7 01 122 64 -31 -91)
+	sprite(singlewhiteoverpass.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 1F 2D 84 00 00 00 0A 00 10 06 1F 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 1F 2F 84 00 00 0A 00 00 06 10 1F 30 84 00 00 80
+copylayout(13, 118)
+
+makestation(118,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 77: Single white overpass with fences (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(119, "Single white overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlewhiteoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlewhiteoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 1F 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 1F 2E 84 00 00 80
+copylayout(49, 119)
+
+makestation(119,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 78: Single black overpass with fences (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(120, "Single black overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_wfences_front.png 8 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_wfences_front.png 168 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 120)
+
+makestation(120,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 79: Single black overpass with fences (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(121, "Single black overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_wfences_front.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_wfences_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 121)
+
+makestation(121,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 7A: Single black overpass with fences (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(122, "Single black overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_wfences_back.png 8 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_wfences_back.png 168 7 01 122 64 -31 -91)
+	sprite(blackoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 122)
+
+makestation(122,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 7B: Single black overpass with fences (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(123, "Single black overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singleblackoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singleblackoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 123)
+
+makestation(123,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 7C: Single brown overpass with fences (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(124, "Single brown overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_wfences_front.png 8 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_wfences_front.png 168 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 124)
+
+makestation(124,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 7D: Single brown overpass with fences (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(125, "Single brown overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_wfences_front.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_wfences_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 125)
+
+makestation(125,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 7E: Single brown overpass with fences (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(126, "Single brown overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_wfences_back.png 8 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_wfences_back.png 168 7 01 122 64 -31 -91)
+	sprite(brownoverpass_yellowlines_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 126)
+
+makestation(126,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 7F: Single brown overpass with fences (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(127, "Single brown overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlebrownoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlebrownoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 127)
+
+makestation(127,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 56: Single green overpass with fences (front), single (background)
+//----------------------------------------------------------------------------
+
+definestation(86, "Single green overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_wfences_front.png 8 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_wfences_front.png 168 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 86)
+
+makestation(86,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 57: Single green overpass with fences (front), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(87, "Single green overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_wfences_front.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_wfences_front.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 87)
+
+makestation(87,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 58: Single green overpass with fences (back), single (background)
+//----------------------------------------------------------------------------
+
+definestation(88, "Single green overpass with fences (back)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_wfences_back.png 8 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_wfences_back.png 168 7 01 122 64 -31 -91)
+	sprite(greenoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 88)
+
+makestation(88,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 59: Single green overpass with fences (back), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(89, "Single green overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(singlegreenoverpass_wfences_back.png 88 7 01 122 64 -51 -101)
+	sprite(singlegreenoverpass_wfences_back.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 89)
+
+makestation(89,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID E7: Black double-ended overpass with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(231, "Black double-ended overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(blackoverpass_doubleend.png 168 7 01 122 64 -51 -101)
+	sprite(blackoverpass_doubleend.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 231)
+
+makestation(231,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID E8: Brown double-ended overpass with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(232, "Brown double-ended overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(brownoverpass_doubleend.png 168 7 01 122 64 -51 -101)
+	sprite(brownoverpass_doubleend.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 232)
+
+makestation(232,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID E9: Green double-ended overpass with fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(233, "Green double-ended overpass with fences (front)",
+	class(JSA3)
+)
+
+spriteblock(
+    set(
+	sprite(greenoverpass_doubleend.png 168 7 01 122 64 -51 -101)
+	sprite(greenoverpass_doubleend.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 233)
+
+makestation(233,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+// Single-sided Platforms with Track Fences
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+//ID 80: Empty platform with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(128, "Platform with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(empty.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(empty.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 128)
+
+makestation(128,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 81: Empty platform with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(129, "Platform with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(empty.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(empty.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+layout(129,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,10,0), dxdydz(16,6,5))
+	compcol(1, xyz(0,0,0), dxdydz(16,6,3))
+    )
+    tile(
+	ground(1011)
+	compcol(2, xyz(10,0,0), dxdydz(6,16,5))
+	compcol(3, xyz(0,0,0), dxdydz(6,16,3))
+    )
+)
+
+makestation(129,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 82: Lights with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(130, "Lights with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(lights.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(lights.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 130)
+
+makestation(130,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 83: Lights with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(131, "Lights with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(lights.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(lights.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 131)
+
+makestation(131,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 84: Signs with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(132, "Signs with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(signs.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(signs.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 132)
+
+makestation(132,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 85: Signs with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(133, "Signs with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(signs.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(signs.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 133)
+
+makestation(133,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 86: Long platform end (bottom) with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(134, "Long platform end with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(endbottom.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(endbottom.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 134)
+
+makestation(134,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 87: Long platform end (bottom) with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(135, "Long platform end with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(endbottom.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(endbottom.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 135)
+
+makestation(135,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 88: Long platform end (top) with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(136, "Long platform end (top) with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(endtop.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(endtop.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 136)
+
+makestation(136,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 89: Long platform end (top) with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(137, "Long platform end (top) with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(endtop.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(endtop.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 137)
+
+makestation(137,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 8E: Simple ramps (bottom) with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(142, "Long platform end (bottom) with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampsbottom.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(simplerampsbottom.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 142)
+
+makestation(142,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 8F: Simple ramps (bottom) with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(143, "Long platform end (bottom) with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampsbottom.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(simplerampsbottom.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 143)
+
+makestation(143,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 90: Simple ramps (top) with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(144, "Simple ramps (top) with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampstop.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(simplerampstop.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 144)
+
+makestation(144,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 91: Simple ramps (top) with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(145, "Simple ramps (top) with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(simplerampstop.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(simplerampstop.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 145)
+
+makestation(145,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 92: Half ramps (bottom) with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(146, "Half ramps (bottom) with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(halframpsbottom.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(halframpsbottom.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 146)
+
+makestation(146,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 93: Half ramps (bottom) with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(147, "Half ramps (bottom) with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(halframpsbottom.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(halframpsbottom.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 147)
+
+makestation(147,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 94: Half ramps (top) with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(148, "Half ramps (top) with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(halframpstop.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(halframpstop.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(16, 148)
+
+makestation(148,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 95: Half ramps (top) with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(149, "Half ramps (top) with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(halframpstop.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(halframpstop.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 149)
+
+makestation(149,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 96: Brown benches with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(150, "Brown benches with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(brownbenches.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(brownbenches.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(PLAT_END, 150)
+
+makestation(150,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 97: Brown benches with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(151, "Brown benches with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(brownbenches.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(brownbenches.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00
+//	00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00
+//	00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 151)
+
+makestation(151,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 98: Green benches with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(152, "Green benches with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(greenbenches.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(greenbenches.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(PLAT_END, 152)
+
+makestation(152,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 99: Green benches with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(153, "Green benches with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(greenbenches.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(greenbenches.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 153)
+
+makestation(153,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 9A: Plants with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(154, "Plants with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(plants.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(plants.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 08 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 08 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(PLAT_END, 154)
+
+makestation(154,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 9B: Plants with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(155, "Plants with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(plants.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(plants.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 08 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 08 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 155)
+
+makestation(155,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 9C: Vending machines with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(156, "Vending machines with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(vendingmachines.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(vendingmachines.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 08 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 08 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(PLAT_END, 156)
+
+makestation(156,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 9D: Vending machines with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(157, "Vending machines with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(vendingmachines.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(vendingmachines.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 08 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 08 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(129, 157)
+
+makestation(157,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 9E: Old roofs with yellow line and track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(158, "Old roofs with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(oldroofs_yellowlines.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(oldroofs_yellowlines.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -51 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(13, 158)
+
+makestation(158,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID 9F: Old roofs with yellow line and track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(159, "Old roofs with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(oldroofs_yellowlines.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(oldroofs_yellowlines.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+layout(159,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,10,0), dxdydz(16,6,16))
+	compcol(1, xyz(0,0,0), dxdydz(16,6,3))
+    )
+    tile(
+	ground(1011)
+	compcol(2, xyz(10,0,0), dxdydz(6,16,16))
+	compcol(3, xyz(0,0,0), dxdydz(6,16,3))
+    )
+)
+
+makestation(159,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID A0: Tiled roofs with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(160, "Tiled roofs with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(tiledroofs.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(tiledroofs.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(13, 160)
+
+makestation(160,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID A1: Tiled roofs with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(161, "Old roofs with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(tiledroofs.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(tiledroofs.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(159, 161)
+
+makestation(161,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID A2: Metal roofs with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(162, "Metal roofs with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(metalroofs.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(metalroofs.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(13, 162)
+
+makestation(162,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID A3: Metal roofs with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(163, "Metal roofs with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(metalroofs.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(metalroofs.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(159, 163)
+
+makestation(163,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID A4: Shinkansen roofs with track fences, single (background)
+//----------------------------------------------------------------------------
+
+definestation(164, "Shinkansen roofs with track fences (back)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(shinkansenroofs.png 8 7 01 122 64 -31 -91)
+	sprite(trackfences.png 8 7 01 122 64 -51 -101)
+	sprite(shinkansenroofs.png 168 7 01 122 64 -31 -91)
+	sprite(trackfences.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 05 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 05 30 84 00 00 80
+copylayout(13, 164)
+
+makestation(164,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID A5: Shinkansen roofs with track fences, single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(165, "Shinkansen roofs with track fences (front)",
+	class(JSA4)
+)
+
+spriteblock(
+    set(
+	sprite(shinkansenroofs.png 88 7 01 122 64 -51 -101)
+	sprite(trackfences.png 88 7 01 122 64 -31 -91)
+	sprite(shinkansenroofs.png 248 7 01 122 64 -11 -101)
+	sprite(trackfences.png 248 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 00 00 00 10 06 03 2E 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2F 84 00 00 00 00 00 06 10 03 30 84 00 00 80
+copylayout(159, 165)
+
+makestation(165,
+   default(ref(0))
+)
+
+
+//------------------------------------------------------------------------
+// Waypoints
+// -----------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+//ID FD: Black overpass waypoint
+//----------------------------------------------------------------------------
+
+definestation(253, "Black overpass waypoint",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(overpasswaypoints1.png 88 7 01 122 64 -51 -101)
+	sprite(overpasswaypoints1.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 253)
+
+makestation(253,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID FE: Brown overpass waypoint
+//----------------------------------------------------------------------------
+
+definestation(254, "Brown overpass waypoint",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(overpasswaypoints1.png 8 7 01 122 64 -51 -101)
+	sprite(overpasswaypoints1.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 10 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 10 2E 84 00 00 80
+copylayout(49, 254)
+
+makestation(254,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID FB: White overpass waypoint (bottom)
+//----------------------------------------------------------------------------
+
+definestation(251, "Black overpass waypoint",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(overpasswaypoints3.png 88 7 01 122 64 -51 -101)
+	sprite(overpasswaypoints3.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 1F 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 1F 2E 84 00 00 80
+copylayout(49, 251)
+
+makestation(251,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID FC: White overpass waypoint (top)
+//----------------------------------------------------------------------------
+
+definestation(252, "White overpass waypoint",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(overpasswaypoints3.png 8 7 01 122 64 -51 -101)
+	sprite(overpasswaypoints3.png 168 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 1F 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 1F 2E 84 00 00 80
+copylayout(49, 252)
+
+makestation(252,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F7: Platform end as waypoint (bottom), single (background)
+//----------------------------------------------------------------------------
+
+definestation(247, "Platform end as waypoint (bottom back)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(shortend_WAYPbottom.png 8 7 01 122 64 -31 -91)
+	sprite(shortend_WAYPbottom.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 247)
+
+makestation(247,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F8: Platform end as waypoint (bottom), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(248, "Platform end as waypoint (bottom front)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(shortend_WAYPbottom.png 88 7 01 122 64 -51 -101)
+	sprite(shortend_WAYPbottom.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 248)
+
+makestation(248,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F9: Platform end as waypoint (top), single (background)
+//----------------------------------------------------------------------------
+
+definestation(249, "Platform end as waypoint (top back)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(shortend_WAYPtop.png 8 7 01 122 64 -31 -91)
+	sprite(shortend_WAYPtop.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 05 2E 84 00 00 80
+copylayout(18, 249)
+
+makestation(249,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID FA: Platform end as waypoint (top), single (foreground)
+//----------------------------------------------------------------------------
+
+definestation(250, "Platform end as waypoint (top front)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(shortend_WAYPtop.png 88 7 01 122 64 -51 -101)
+	sprite(shortend_WAYPtop.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 0A 00 10 06 05 2D 84 00 00 80
+//	F3 03 00 00
+//	0A 00 00 06 10 05 2E 84 00 00 80
+copylayout(19, 250)
+
+makestation(250,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F4: Modular overpass low, no platform
+//----------------------------------------------------------------------------
+
+definestation(244, "Modular overpass low (waypoint)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(modularoverpass2.png 168 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 8 7 01 122 64 -51 -101)
+	sprite(modularoverpass2.png 248 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00
+//	00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00
+//	0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 244)
+
+makestation(244,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F5: Modular overpass high, waypoint
+//----------------------------------------------------------------------------
+
+definestation(245, "Modular overpass high (waypoint)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(modularoverpass2.png 168 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 168 7 01 122 64 -51 -101)
+	sprite(modularoverpass2.png 248 7 01 122 64 -31 -91)
+	sprite(modularoverpass1.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 245)
+
+makestation(245,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F6: Modular overpass slanted roof, waypoint
+//----------------------------------------------------------------------------
+
+definestation(246, "Modular overpass slanted roof (waypoint)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(modularoverpass2.png 168 7 01 122 64 -31 -91)
+	sprite(modularoverpass2.png 8 7 01 122 64 -51 -101)
+	sprite(modularoverpass2.png 248 7 01 122 64 -31 -91)
+	sprite(modularoverpass2.png 88 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+//	F4 03 00 00
+//	00 00 00 10 06 10 2D 84 00 00 00 0A 00 10 06 10 2E 84 00 00 80
+//	F3 03 00 00
+//	00 00 00 06 10 10 2F 84 00 00 0A 00 00 06 10 10 30 84 00 00 80
+copylayout(13, 246)
+
+makestation(246,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F2: Crossing as waypoint (bottom)
+//----------------------------------------------------------------------------
+
+definestation(242, "Crossing (bottom)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(crossing.png 8 7 01 122 64 -31 -91)
+	sprite(crossing.png 168 7 01 122 64 -31 -91)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+layout(242,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,0,0), dxdydz(0,0,0))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(0,0,0), dxdydz(0,0,0))
+    )
+)
+
+makestation(242,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+//ID F3: Crossing as waypoint (top)
+//----------------------------------------------------------------------------
+
+definestation(243, "Crossing (top)",
+	class(WAYP)
+)
+
+spriteblock(
+    set(
+	sprite(crossing.png 88 7 01 122 64 -51 -101)
+	sprite(crossing.png 248 7 01 122 64 -11 -101)
+    )
+)
+
+def(0) spriteset(lots(0))
+
+layout(243,
+    tile(
+	ground(1012)
+	compcol(0, xyz(0,10,0), dxdydz(0,0,0))
+    )
+    tile(
+	ground(1011)
+	compcol(1, xyz(10,0,0), dxdydz(0,0,0))
+    )
+)
+
+
+makestation(243,
+   default(ref(0))
+)
+
+
+//----------------------------------------------------------------------------
+// Station class names
+//----------------------------------------------------------------------------
+
+classnames(0,{UK, "Japan Stations (add-ons): Platforms"})
+classnames(18,{UK, "Japan Stations (add-ons): Single Platforms"})
+classnames(66,{UK, "Japan Stations (add-ons): Platforms with fences"})
+classnames(128,{UK, "Japan Stations (add-ons): Platforms with track fences"})
+
+classnames(0,{D, "Japan Stations (add-ons): Bahnsteige"})
+classnames(18,{D, "Japan Stations (add-ons): Bahnsteige (einseitig)"})
+classnames(66,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen"})
+classnames(128,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen (gleisseitig)"})
+
