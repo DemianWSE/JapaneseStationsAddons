@@ -14,7 +14,8 @@ grfinit(50 47 05 00,
     grfname(ALL, "Japanese Station Set add-ons v0.2.2")
     grfdescription(ALL,CRLF T_LGRAY A9 "Original Japanese Stations drawn by Sanchimaru and Tony Babelony" CRLF
 "and coded by Death (E. Silberstein), stevenh and Dandan" CRLF CRLF
-"Add-ons by DemianWSE")
+"Add-ons by DemianWSE" CRLF
+"Additional graphics by KeepingItRail")
     grfurl(ALL, "https://github.com/DemianWSE/JapaneseStationsAddons")
     grfpalette(WIN)
     grfversion(3)
