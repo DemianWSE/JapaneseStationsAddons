@@ -1,0 +1,61 @@
+//-----------------------------------------------------------------------------
+// Japanese Stations Add-ons
+// by DemianWSE
+//-----------------------------------------------------------------------------
+
+
+setfeature(_STATION)
+setgrfversion(7)
+setpath(sprites) // relative path for real sprites
+
+textmode_on()
+
+grfinit(50 47 05 00,
+    grfname(ALL, "Japanese Station Set add-ons v0.2.2")
+    grfdescription(ALL,CRLF T_LGRAY A9 "Original Japanese Stations drawn by Sanchimaru and Tony Babelony" CRLF
+"and coded by Death (E. Silberstein), stevenh and Dandan" CRLF CRLF
+"Add-ons by DemianWSE")
+    grfurl(ALL, "https://github.com/DemianWSE/JapaneseStationsAddons")
+    grfpalette(WIN)
+    grfversion(3)
+    grfminversion(1)
+)
+
+textmode_off()
+
+// classes
+define(JSA0,4A 53 41 30)
+define(JSA2,4A 53 41 32)
+define(JSA3,4A 53 41 33)
+define(JSA4,4A 53 41 34)
+define(JSA7,4A 53 41 37)
+define(WAYP,57 41 59 50)
+
+asl_on()
+
+include(01_normal_platforms.m4)
+include(02_single_platforms.m4)
+include(03_platforms_with_fences.m4)
+include(04_platforms_with_track_fences.m4)
+include(05_modular_stations.m4)
+include(06_buffers.m4)
+include(07_non_track.m4)
+include(08_waypoints.m4)
+
+asl_off()
+
+//----------------------------------------------------------------------------
+// Station class names
+//----------------------------------------------------------------------------
+
+classnames(0,{UK, "Japan Stations (add-ons): Platforms"})
+classnames(18,{UK, "Japan Stations (add-ons): Single Platforms"})
+classnames(66,{UK, "Japan Stations (add-ons): Platforms with fences"})
+classnames(128,{UK, "Japan Stations (add-ons): Platforms with track fences"})
+classnames(192,{UK, "Japan Stations (add-ons): Non{-}track Platforms"})
+
+classnames(0,{D, "Japan Stations (add-ons): Bahnsteige"})
+classnames(18,{D, "Japan Stations (add-ons): Bahnsteige (einseitig)"})
+classnames(66,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen"})
+classnames(128,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen (gleisseitig)"})
+classnames(192,{D, UTF8 "Japan Stations (add-ons): Bahnsteige ---"})
