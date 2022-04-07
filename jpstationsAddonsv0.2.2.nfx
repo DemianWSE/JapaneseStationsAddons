@@ -14,8 +14,7 @@ grfinit(50 47 05 00,
     grfname(ALL, "Japanese Station Set add-ons v0.2.2")
     grfdescription(ALL,CRLF T_LGRAY A9 "Original Japanese Stations drawn by Sanchimaru and Tony Babelony" CRLF
 "and coded by Death (E. Silberstein), stevenh and Dandan" CRLF CRLF
-"Add-ons by DemianWSE" CRLF
-"Additional graphics by KeepingItRail")
+"Add-ons by DemianWSE")
     grfurl(ALL, "https://github.com/DemianWSE/JapaneseStationsAddons")
     grfpalette(WIN)
     grfversion(3)
@@ -49,14 +48,14 @@ asl_off()
 // Station class names
 //----------------------------------------------------------------------------
 
-classnames(0,{UK, "Japan Stations (add-ons): Platforms"})
-classnames(18,{UK, "Japan Stations (add-ons): Single Platforms"})
-classnames(66,{UK, "Japan Stations (add-ons): Platforms with fences"})
-classnames(128,{UK, "Japan Stations (add-ons): Platforms with track fences"})
-classnames(192,{UK, "Japan Stations (add-ons): Non{-}track Platforms"})
+classnames(0,{UK, "Japanese Platforms (add-ons)"})
+classnames(18,{UK, "Japanese Single Platforms (add-ons)"})
+classnames(66,{UK, "Japanese Platforms with Fences (add-ons)"})
+classnames(128,{UK, "Japanese Platforms with Track Fences (add-ons)"})
+classnames(192,{UK, "Japanese Non{-}track Platforms (add-ons)"})
 
-classnames(0,{D, "Japan Stations (add-ons): Bahnsteige"})
-classnames(18,{D, "Japan Stations (add-ons): Bahnsteige (einseitig)"})
-classnames(66,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen"})
-classnames(128,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen (gleisseitig)"})
+//classnames(0,{D, "Japan Stations (add-ons): Bahnsteige"})
+//classnames(18,{D, "Japan Stations (add-ons): Bahnsteige (einseitig)"})
+//classnames(66,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen"})
+//classnames(128,{D, UTF8 "Japan Stations (add-ons): Bahnsteige mit Zäunen (gleisseitig)"})
 //classnames(192,{D, UTF8 "Japan Stations (add-ons): Bahnsteige ---"})
